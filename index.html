@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat dan Video Spesial</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .envelope {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1.2em;
+            font-weight: 700;
+            color: white;
+        }
+        .envelope:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .envelope::before {
+            content: "✉️";
+            font-size: 2em;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .letter {
+            display: none;
+            background: linear-gradient(135deg, #ffffff 0%, #f7f7f7 100%);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #6dd5fa 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1em;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .overlay-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+        }
+        .overlay-content video {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .overlay-content .close-button {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .overlay-content .close-button:hover {
+            background-color: #c0392b;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #34495e;
+            line-height: 1.6;
+        }
+        @media (max-width: 768px) {
+            .letter {
+                padding: 20px;
+                max-width: 90%;
+            }
+            button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+            .envelope {
+                font-size: 1em;
+                padding: 15px;
+            }
+            .envelope::before {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div class="envelope" onclick="showLetter()">Klik untuk membuka surat </div>
+        <div id="letter" class="letter">
+            <h2>SURPRISE</h2>
+            <p>Hai Sayanggg! Terima kasih sudah membuka surat ini. sayanggg adalah orang yang istimewa, dan pyyp ingin sayanggg tahu betapa berharganya dirimu. Happy 7 month sayanggg!</p>
+            <button onclick="showVideo()"> Klik Lihat Surprise</button>
+        </div>
+    </div>
+    <div id="videoOverlay" class="overlay">
+        <div class="overlay-content">
+            <video controls preload="metadata">
+                <source src="assets/vid.mp4" type="video/mp4">
+                Browser Anda tidak mendukung tag video.
+            </video>
+            <button class="close-button" onclick="closeVideo()">Tutup</button>
+        </div>
+    </div>
+    <script>
+        function showLetter() {
+            document.getElementById("letter").style.display = "block";
+            document.querySelector(".envelope").style.display = "none";
+        }
+        function showVideo() {
+            document.getElementById("videoOverlay").style.display = "flex";
+        }
+        function closeVideo() {
+            document.getElementById("videoOverlay").style.display = "none";
+        }
+    </script>
+</body>
+</html>
